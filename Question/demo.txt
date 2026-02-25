@@ -1,0 +1,6 @@
+
+Additon: 54
+Subtraction: 36
+Multiply: 405
+Divison: 5
+
