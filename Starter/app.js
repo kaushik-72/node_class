@@ -9,10 +9,23 @@
 // anythng after -y, -D is a flag.
 
 //? we have total 5 dependencies (prod/dev)
+//& when a data is created first time we use POST method
+//* form has a default value of get set it to POST in htmlfile
+//* base url/param1/param2/....?-< param end after this is query.
+//* express is a minimal routing framework
+//? npm update nodemon
 
 import express from "express";
+import fs from "node:fs"
+import routesFile from "./routes/route.js"
 
 let app = express();
+
+app.use(routesFile); //& global/app middleware
+
+app.use(express.urlencoded({extended:true})); //todo
+
+app.get("/api/v1",routesFile);
 
 app.listen(3000 , (err)=>{
 if(err) throw err;
@@ -22,15 +35,28 @@ console.log("server running .....")
 
 
 
-app.get("/json",(req,res)=>{
-    // content-head
-    res.json({success:true, message:"", data:{},error:{}});
-})
 
-app.get("/about",(req,res)=>{
-    res.end("about page");
-})
+
+// app.get("/json",(req,res)=>{
+//     // content-head
+//     res.json({success:true, message:"", data:{},error:{}});
+// })
+
+// app.get("/about",(req,res)=>{
+//     res.end("about page");
+// })
 
 
 //? nodemon fileName.js
+
+app.get("/form",()=>{
+    let readStream = fs.createReadStream(
+        path.join(import.meta.dirname,"pages","form.html")
+    )
+})
+
+//thunder client : vscode / no net req/ paid/ more req; delte old req
+// postman: chrome / requires net / unlimited endpoint can be created
+
+//? create a function to get all the users
 
