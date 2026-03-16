@@ -18,7 +18,7 @@ module.exports = {
 */
 
 export const displayFormPage = (req,res) =>{
-    let filePath = path.join(import.meta.dirname, "..","pages","index.", "html");
+    let filePath = path.join(import.meta.dirname, "..","Pages","index.", "html");
     let fileData = fs.createReadStream(filePath,"utf-8");
     fileData.pipe(res);   
 };
